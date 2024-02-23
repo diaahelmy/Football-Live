@@ -1,6 +1,7 @@
 package com.example.getapi.Presentetion
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -11,9 +12,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getapi.Presentetion.di.Injector
 import com.example.getapi.databinding.FragmentRnakBinding
@@ -24,6 +25,8 @@ class RankFragment : Fragment() {
     @Inject
     lateinit var factory: MyViewModelFactor
     private var _binding: FragmentRnakBinding? = null
+    private val args: RankFragmentArgs by navArgs()
+
     private val binding get() = _binding!!
     private lateinit var matchViewModel: MyViewModel
     private lateinit var adapter: RankAdapter
@@ -32,6 +35,7 @@ class RankFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+
         _binding = FragmentRnakBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,17 +43,17 @@ class RankFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val match = args.leagueId
+
         (requireActivity().application as Injector).createMatchSubComponent().injectRank(this)
 
         matchViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
         if (isNetworkAvailable()) {
-            val arguments = arguments ?: return // Handle null arguments
 
-            val match = RankFragmentArgs.fromBundle(arguments).leagueId
-            Log.d("diaa", match.League_ID.toString())
+            Log.d("diaa", match.toString())
 
 
-            initRecyclerView(match.League_ID.toString())
+            initRecyclerView(match.toString())
         } else {
             binding.noInternet.visibility = View.VISIBLE
             binding.recyclerView.visibility = View.GONE
@@ -70,6 +74,7 @@ class RankFragment : Fragment() {
         displayMatchRank(id)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun displayMatchRank(id: String) {
         binding.progressBar.visibility = View.VISIBLE
         val responseLiveData = matchViewModel.getRank(id)

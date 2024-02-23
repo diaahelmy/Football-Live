@@ -1,6 +1,7 @@
 package com.example.getapi.Presentetion
 
 
+import android.annotation.SuppressLint
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.getapi.databinding.ListrankBinding
 class RankAdapter() :
     RecyclerView.Adapter<RankAdapter.MyViewHolder>() {
     private val RankList = ArrayList<Ranking>()
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(Match: List<Ranking>) {
         RankList.clear()
         RankList.addAll(Match)

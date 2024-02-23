@@ -21,17 +21,19 @@ class MainFragment : Fragment() {
     @Inject
     lateinit var factory: MyViewModelFactor
     private var _binding: FragmentMainBinding? = null
+
     private val binding get() = _binding!!
     private lateinit var matchViewModel: MyViewModel
     private lateinit var adapter: MatchAdapter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,10 +41,14 @@ class MainFragment : Fragment() {
 
         (requireActivity().application as Injector).createMatchSubComponent().inject(this)
 
+
+
+
         matchViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
         if (isNetworkAvailable()) {
             initRecyclerView()
         } else {
+
             binding.noInternet.visibility = View.VISIBLE
             binding.recyclerView.visibility = View.GONE
             Toast.makeText(
@@ -93,7 +99,7 @@ class MainFragment : Fragment() {
     }
 
 
-    fun isNetworkAvailable(): Boolean {
+    private fun isNetworkAvailable(): Boolean {
         val connectivityManager =
             requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
@@ -113,4 +119,6 @@ class MainFragment : Fragment() {
         super.onDestroy()
         _binding == null
     }
+
+
 }

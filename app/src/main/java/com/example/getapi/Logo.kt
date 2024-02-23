@@ -1,6 +1,6 @@
 package com.example.getapi
 
-class Logo() {
+class Logo {
     private val teamLogo = mapOf(
 //    League:"Bundesliga"
         "Borussia Dortmund" to R.drawable.borussia_dortmund_logo,

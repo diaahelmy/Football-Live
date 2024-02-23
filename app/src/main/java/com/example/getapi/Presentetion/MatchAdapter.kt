@@ -1,5 +1,6 @@
 package com.example.getapi.Presentetion
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,19 +11,20 @@ import com.example.getapi.R
 import com.example.getapi.data.Model.LiveMatch.MatchLiveData
 import com.example.getapi.databinding.ListlivematchBinding
 
-class MatchAdapter( private val viewModel: MyViewModel) :
+class MatchAdapter(private val viewModel: MyViewModel) :
     RecyclerView.Adapter<MatchAdapter.MyViewHolder>() {
     private val matchList = ArrayList<MatchLiveData>()
 
-    fun setList(movies: List<MatchLiveData>) {
+    fun setList(matches: List<MatchLiveData>) {
+
+
         matchList.clear()
-        matchList.addAll(movies)
+        matchList.addAll(matches)
+
+
 
     }
 
-    companion object {
-        var leagueId: String = "2" // Set the default value here
-    }
 
     class MyViewHolder(val binding: ListlivematchBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(match: MatchLiveData, viewModel: MyViewModel) {
@@ -34,7 +36,8 @@ class MatchAdapter( private val viewModel: MyViewModel) :
             binding.tHomeTeam.text = match.Home_Team
             binding.time.text = match.Status
             binding.leagname.text = match.League
-            //
+
+
             binding.cardview.setOnClickListener {
 
                 val action = MainFragmentDirections.actionMainFragmentToMatchFragment(match)
@@ -99,4 +102,7 @@ class MatchAdapter( private val viewModel: MyViewModel) :
     override fun getItemCount(): Int {
         return matchList.size
     }
+
+
+
 }

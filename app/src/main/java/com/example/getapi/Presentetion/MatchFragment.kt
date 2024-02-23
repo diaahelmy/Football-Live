@@ -1,31 +1,22 @@
 package com.example.getapi.Presentetion
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
+
 import android.os.Bundle
-import android.util.Log
+
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.getapi.Logo
-import com.example.getapi.R
+
 import com.example.getapi.databinding.FragmentMatchBinding
-import com.example.getapi.databinding.ListlivematchBinding
+
 
 class MatchFragment : Fragment() {
     private var _binding: FragmentMatchBinding? = null
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,11 +45,11 @@ class MatchFragment : Fragment() {
             logoalHilal.setImageResource(awayLogoId)
             logoalHilalhome.setImageResource(homeLogoId)
             logoalHilal.setOnClickListener {
-                val action = MatchFragmentDirections.actionMatchFragmentToRnakFragment(match)
+                val action = MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
                 it.findNavController().navigate(action)
             }
             logoalHilalhome.setOnClickListener {
-                val action = MatchFragmentDirections.actionMatchFragmentToRnakFragment(match)
+                val action = MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
                 it.findNavController().navigate(action)
             }
         }

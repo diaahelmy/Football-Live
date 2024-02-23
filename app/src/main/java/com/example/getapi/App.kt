@@ -1,12 +1,9 @@
 package com.example.getapi
 
 import android.app.Application
-import com.example.getapi.Presentetion.MyViewModel
-import androidx.lifecycle.LiveData
 import com.example.getapi.Presentetion.di.AppComponent
 import com.example.getapi.Presentetion.di.AppModule
 import com.example.getapi.Presentetion.di.DaggerAppComponent
-import com.example.getapi.Presentetion.di.DaggerAppComponent.Builder
 import com.example.getapi.Presentetion.di.Injector
 import com.example.getapi.Presentetion.di.MatchSubComponent
 import com.example.getapi.Presentetion.di.NetModule

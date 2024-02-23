@@ -1,52 +1,32 @@
 package com.example.getapi.Presentetion
 
-import android.annotation.SuppressLint
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
+import android.view.MenuItem
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.getapi.BuildConfig
-import com.example.getapi.Presentetion.di.AppComponent
-import com.example.getapi.Presentetion.di.AppModule
-import com.example.getapi.Presentetion.di.DaggerAppComponent
-import com.example.getapi.Presentetion.di.Injector
-import com.example.getapi.Presentetion.di.NetModule
-import com.example.getapi.Presentetion.di.RemoteDataModule
+import androidx.navigation.findNavController
 import com.example.getapi.R
 import com.example.getapi.databinding.ActivityMainBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import javax.inject.Inject
+import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
 
-//    @Inject
-//    lateinit var factory: MyViewModelFactor
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
     private lateinit var binding: ActivityMainBinding
-    private lateinit var matchViewModel: MyViewModel
-    private lateinit var adapter: MatchAdapter
-    private lateinit var appComponent: AppComponent
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        appComponent = DaggerAppComponent.builder()
-            .appModule(AppModule(applicationContext))
-            .netModule(NetModule(BuildConfig.X_RapidAPI_Host))
-            .remoteDataModule(RemoteDataModule(BuildConfig.X_RapidAPI_Key, "1"))
-            .build()
+        binding.navView.setNavigationItemSelectedListener(this)
+        toggle()
 
+    }
 
-//        (application as Injector).createMovieSubComponent().inject(req)
+    //        (application as Injector).createMovieSubComponent().inject(req)
 //
 //        matchViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
 //
@@ -138,5 +118,51 @@ class MainActivity : AppCompatActivity() {
 //        }
 //
 //    }
-      }
+
+
+    private fun toggle() {
+
+
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+
+
+        } else {
+            binding.drawerLayout.openDrawer(GravityCompat.START)
+
+        }
+
+
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.La_Liga -> {
+//
+                val navController = findNavController(R.id.fragmentContainerView)
+                navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToRnakFragment(
+                        36
+                    )
+                )
+
+
+            }
+
+            R.id.Premier_League -> {
+                val navController = findNavController(R.id.fragmentContainerView)
+                navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToRnakFragment(
+                        1
+                    )
+                )
+
+            }
+
+            else -> return false
+        }
+        return true
+    }
+
+
 }

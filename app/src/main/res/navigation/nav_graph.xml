@@ -9,8 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.example.getapi.Presentetion.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main"
-        >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_matchFragment"
             app:destination="@id/matchFragment" />
@@ -24,24 +23,30 @@
         android:id="@+id/matchFragment"
         android:name="com.example.getapi.Presentetion.MatchFragment"
         android:label="MatchFragment"
-        tools:layout="@layout/fragment_match"
-        >
+        tools:layout="@layout/fragment_match">
         <argument
             android:name="matchid"
             app:argType="com.example.getapi.data.Model.LiveMatch.MatchLiveData" />
         <action
             android:id="@+id/action_matchFragment_to_rnakFragment"
             app:destination="@id/rnakFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/rnakFragment"
         android:name="com.example.getapi.Presentetion.RankFragment"
         android:label="fragment_rnak"
-        tools:layout="@layout/fragment_rnak" >
+        tools:layout="@layout/fragment_rnak">
+
+        <action
+            android:id="@+id/action_rnakFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
         <argument
             android:name="leagueId"
-            app:argType="com.example.getapi.data.Model.LiveMatch.MatchLiveData" />
+            app:argType="integer" />
     </fragment>
 
 </navigation>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+
+            android:id="@+id/Premier_League"
+            android:icon="@drawable/premier_league_logo"
+            android:title="Premier League" />
+
+        <item
+            android:id="@+id/La_Liga"
+            android:icon="@drawable/la_liga_logo"
+            android:title="La Liga" />
+
+    </group>
+</menu>
