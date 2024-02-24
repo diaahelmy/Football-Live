@@ -6,4 +6,5 @@
     <string name="home_team">Home Team</string>
     <string name="away_team">Away Team</string>
     <string name="no_internet_connection_available">No internet connection available.</string>
+    <string name="search">search</string>
 </resources>
