@@ -6,7 +6,6 @@ plugins {
 
 }
 
-var leagueId: String = "33"
 
 android {
 
@@ -31,11 +30,7 @@ android {
             "X_RapidAPI_Host",
             "\"https://sports-live-scores.p.rapidapi.com\""
         )
-        buildConfigField(
-            "String",
-            "leagueId",
-            "\"$leagueId\""
-        )
+
 
 
     }

@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:text="@string/_1"
+                    android:text="@string/one"
                     app:layout_constraintBottom_toBottomOf="@+id/goals_Scored"
                     app:layout_constraintStart_toEndOf="@+id/goals_Scored"
                     app:layout_constraintTop_toTopOf="@+id/goals_Scored" />

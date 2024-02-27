@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 
-interface apiRank {
+interface ApiRank {
     @GET("football/rankings/{leagueId}")
     suspend fun getRANK(
         @Path("leagueId") leagueId: String,
