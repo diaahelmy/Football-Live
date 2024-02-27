@@ -2,7 +2,11 @@ package com.example.getapi.data.Model.MatchLineups
 
 import com.google.gson.annotations.SerializedName
 
-data class Statistic(
+data class LineupsStatistic(
+
+    @SerializedName("internal_error")
+    val internal_error: String,
+    val Text: String,
     val Country: String,
     val Formation: String,
     @SerializedName("Jersey Num")
@@ -12,5 +16,5 @@ data class Statistic(
     val Name: String,
     val Position: String,
     val Stats: Stats,
-    val Team: String
+    val Team: String,
 )

@@ -1,13 +1,13 @@
 package com.example.getapi
 
 import android.app.Application
-import com.example.getapi.Presentetion.di.AppComponent
-import com.example.getapi.Presentetion.di.AppModule
-import com.example.getapi.Presentetion.di.DaggerAppComponent
-import com.example.getapi.Presentetion.di.Injector
-import com.example.getapi.Presentetion.di.MatchSubComponent
-import com.example.getapi.Presentetion.di.NetModule
-import com.example.getapi.Presentetion.di.RemoteDataModule
+import com.example.getapi.presentetion.di.AppComponent
+import com.example.getapi.presentetion.di.AppModule
+import com.example.getapi.presentetion.di.DaggerAppComponent
+import com.example.getapi.presentetion.di.Injector
+import com.example.getapi.presentetion.di.MatchSubComponent
+import com.example.getapi.presentetion.di.NetModule
+import com.example.getapi.presentetion.di.RemoteDataModule
 
 class App : Application(), Injector {
     private lateinit var appComponent: AppComponent
@@ -20,7 +20,7 @@ class App : Application(), Injector {
             appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(applicationContext))
                 .netModule(NetModule(BuildConfig.X_RapidAPI_Host))
-                .remoteDataModule(RemoteDataModule(BuildConfig.X_RapidAPI_Key, BuildConfig.leagueId))
+                .remoteDataModule(RemoteDataModule(BuildConfig.X_RapidAPI_Key))
                 .build()
 
 
@@ -30,6 +30,10 @@ class App : Application(), Injector {
     }
 
     override fun createRankSubComponent2(): MatchSubComponent {
+        return appComponent.matchSubComponent().create()
+    }
+
+    override fun createLineupsSubComponent(): MatchSubComponent {
         return appComponent.matchSubComponent().create()
     }
 }

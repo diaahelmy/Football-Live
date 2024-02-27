@@ -1,7 +1,8 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
+import com.example.getapi.data.api.Lineups
 import com.example.getapi.data.api.LiveMatch
-import com.example.getapi.data.api.apiRank
+import com.example.getapi.data.api.ApiRank
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -27,8 +28,15 @@ class NetModule(private val baseUrl: String) {
     }
     @Singleton
     @Provides
-    fun providerRankService(retrofit: Retrofit):apiRank {
+    fun providerRankService(retrofit: Retrofit):ApiRank {
 
-        return retrofit.create(apiRank::class.java)
+        return retrofit.create(ApiRank::class.java)
     }
+    @Singleton
+    @Provides
+    fun providerLineupsService(retrofit: Retrofit):Lineups {
+
+        return retrofit.create(Lineups::class.java)
+    }
+
 }

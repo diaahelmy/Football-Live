@@ -15,7 +15,7 @@ data class MatchLiveData(
     @SerializedName("Away Team")
     val Away_Team: String,
     @SerializedName("Home Score")
-    val Home_Score: Int,
+    var Home_Score: Int,
     @SerializedName("Home Team")
     val Home_Team: String,
     @SerializedName("Initial Away Odd")

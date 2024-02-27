@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 
 import android.annotation.SuppressLint
@@ -16,7 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.getapi.Presentetion.di.Injector
+import com.example.getapi.presentetion.di.Injector
 import com.example.getapi.databinding.FragmentRnakBinding
 import javax.inject.Inject
 
@@ -96,7 +96,7 @@ class RankFragment : Fragment() {
 
     }
 
-    fun isNetworkAvailable(): Boolean {
+    private fun isNetworkAvailable(): Boolean {
         val connectivityManager =
             requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

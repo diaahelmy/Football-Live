@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
 import android.content.Context
 import dagger.Module

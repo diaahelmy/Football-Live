@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
 import com.example.getapi.data.DataSource.MatchLiveLocalDataSourse
 import com.example.getapi.data.DataSourceMatch.MatchLiveLocalDataSourseLive

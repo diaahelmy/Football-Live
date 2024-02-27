@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Presentetion.RankFragment">
+        tools:context=".presentetion.RankFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rankdata"
@@ -24,7 +24,7 @@
                 android:layout_marginStart="32dp"
 
                 android:layout_marginTop="16dp"
-                android:text="Club"
+                android:text="@string/club"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="3dp"
-                android:text="pt"
+                android:text="@string/pt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="10dp"
-                android:text="GA"
+                android:text="@string/ga"
                 app:layout_constraintEnd_toStartOf="@+id/point"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="16dp"
-                android:text="GF"
+                android:text="@string/gf"
                 app:layout_constraintEnd_toStartOf="@+id/goals_Against"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
-                android:text="L"
+                android:text="@string/l"
                 app:layout_constraintEnd_toStartOf="@+id/goals_Scored"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="10dp"
-                android:text="D"
+                android:text="@string/d"
                 app:layout_constraintEnd_toStartOf="@+id/lose"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="10dp"
-                android:text="W"
+                android:text="@string/w"
                 app:layout_constraintEnd_toStartOf="@+id/draw"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="10dp"
-                android:text="MP"
+                android:text="@string/mp"
                 app:layout_constraintEnd_toStartOf="@+id/win"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,7 +113,7 @@
             android:id="@+id/empty_text"
             android:layout_width="100dp"
             android:layout_height="6dp"
-            android:text="empity"
+            android:text="@string/empity"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

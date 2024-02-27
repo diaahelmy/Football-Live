@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.google.android.material.textview.MaterialTextView
+
+                    android:id="@+id/materialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/formation"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+
+                    android:id="@+id/rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/_3_9"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/goals_Scored"
+                    app:layout_constraintStart_toStartOf="@+id/goals_Scored"
+                    app:layout_constraintTop_toBottomOf="@+id/goals_Scored" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+
+                    android:id="@+id/star"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/_67699dsafasfa"
+                    android:textSize="20sp"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/rate"
+                    app:layout_constraintStart_toEndOf="@+id/rate"
+                    app:layout_constraintTop_toTopOf="@+id/rate" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/Formation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/_4_2_3_1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/materialTextView"
+                    app:layout_constraintStart_toStartOf="@+id/materialTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/nameplayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:text="@string/diaa"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Formation" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/numberplayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/_7"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/nameplayer"
+                    app:layout_constraintStart_toEndOf="@+id/nameplayer"
+                    app:layout_constraintTop_toTopOf="@+id/nameplayer"
+                    app:layout_constraintVertical_bias="0.481" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/positionplayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/f"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                    app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                    app:layout_constraintTop_toTopOf="@+id/materialTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/goals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/_1"
+                    app:layout_constraintBottom_toBottomOf="@+id/goals_Scored"
+                    app:layout_constraintStart_toEndOf="@+id/goals_Scored"
+                    app:layout_constraintTop_toTopOf="@+id/goals_Scored" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/goals_Scored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/goals_scored"
+                    app:layout_constraintEnd_toStartOf="@+id/numberplayer"
+                    app:layout_constraintStart_toStartOf="@+id/nameplayer"
+                    app:layout_constraintTop_toBottomOf="@+id/nameplayer" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/minutesPlayedid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/minutesplay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/rate"
+                    app:layout_constraintStart_toStartOf="@+id/rate"
+                    app:layout_constraintTop_toBottomOf="@+id/rate" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/minutesPlayed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/_99"
+                    app:layout_constraintBottom_toBottomOf="@+id/minutesPlayedid"
+                    app:layout_constraintStart_toEndOf="@+id/minutesPlayedid"
+                    app:layout_constraintTop_toTopOf="@+id/minutesPlayedid" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

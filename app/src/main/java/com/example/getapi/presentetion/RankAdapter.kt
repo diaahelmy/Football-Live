@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 
 import android.annotation.SuppressLint
@@ -14,13 +14,13 @@ import com.example.getapi.R
 import com.example.getapi.data.Model.LeagueRank.Ranking
 import com.example.getapi.databinding.ListrankBinding
 
-class RankAdapter() :
+class RankAdapter :
     RecyclerView.Adapter<RankAdapter.MyViewHolder>() {
-    private val RankList = ArrayList<Ranking>()
+    private val rankList = ArrayList<Ranking>()
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(Match: List<Ranking>) {
-        RankList.clear()
-        RankList.addAll(Match)
+    fun setList(matchRank: List<Ranking>) {
+        rankList.clear()
+        rankList.addAll(matchRank)
         notifyDataSetChanged()
     }
     class MyViewHolder(val binding: ListrankBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -76,10 +76,10 @@ class RankAdapter() :
         return MyViewHolder(binding)
     }
     override fun getItemCount(): Int {
-        return RankList.size
+        return rankList.size
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(RankList[position])
+        holder.bind(rankList[position])
     }
 
 

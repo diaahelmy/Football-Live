@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +12,6 @@ class MyViewModelFactor(
 
     ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MyViewModel(getMatchUseCase, updateMatchUseCase) as T
+        return MyViewModel(getMatchUseCase, updateMatchUseCase) as  T
     }
 }

@@ -24,7 +24,7 @@ android {
         buildConfigField(
             "String",
             "X_RapidAPI_Key",
-            "\"691214145fmsh5cabe2d122276c5p16d31bjsna300c1d167d5\""
+            "\"0bec3c4734msh02fa27d22fe06d2p17adfajsn5fc21bfbd5cc\""
         )
         buildConfigField(
             "String",
@@ -84,7 +84,6 @@ dependencies {
     val lifecycle_version = "2.7.0"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 
@@ -95,9 +94,10 @@ dependencies {
 
 
     //Room database
-    val room_version = "2.6.0"
+    val room_version = "2.6.1"
 
     // To use Kotlin annotation processing tool (kapt)
+    //noinspection KaptUsageInsteadOfKsp
     kapt("androidx.room:room-compiler:$room_version")
 
     implementation("androidx.room:room-ktx:$room_version")
@@ -121,6 +121,7 @@ dependencies {
 
 // Glide v4
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    //noinspection KaptUsageInsteadOfKsp
     kapt("com.github.bumptech.glide:compiler:4.14.2")
 
     // Navigation

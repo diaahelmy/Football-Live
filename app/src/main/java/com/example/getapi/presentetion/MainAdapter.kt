@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 
 import android.view.LayoutInflater
@@ -11,9 +11,10 @@ import com.example.getapi.R
 import com.example.getapi.data.Model.LiveMatch.MatchLiveData
 import com.example.getapi.databinding.ListlivematchBinding
 
-class MatchAdapter(private val viewModel: MyViewModel) :
-    RecyclerView.Adapter<MatchAdapter.MyViewHolder>() {
+class MainAdapter :
+    RecyclerView.Adapter<MainAdapter.MyViewHolder>() {
     private val matchList = ArrayList<MatchLiveData>()
+
 
     fun setList(matches: List<MatchLiveData>) {
 
@@ -22,22 +23,22 @@ class MatchAdapter(private val viewModel: MyViewModel) :
         matchList.addAll(matches)
 
 
-
     }
 
 
     class MyViewHolder(val binding: ListlivematchBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(match: MatchLiveData, viewModel: MyViewModel) {
-            viewModel.updateMatchDetails(match)
+
+        fun bind(match: MatchLiveData) {
+
 
             binding.tAwayScore.text = match.Away_Score.toString()
             binding.tHomeScore.text = match.Home_Score.toString()
             binding.tAwayTeam.text = match.Away_Team
             binding.tHomeTeam.text = match.Home_Team
-            binding.time.text = match.Status
+            binding.time.text = match.Match_ID
             binding.leagname.text = match.League
 
-
+//            viewModel.fetchData(match)
             binding.cardview.setOnClickListener {
 
                 val action = MainFragmentDirections.actionMainFragmentToMatchFragment(match)
@@ -95,14 +96,13 @@ class MatchAdapter(private val viewModel: MyViewModel) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        holder.bind(matchList[position], viewModel)
+        holder.bind(matchList[position])
 
     }
 
     override fun getItemCount(): Int {
         return matchList.size
     }
-
 
 
 }

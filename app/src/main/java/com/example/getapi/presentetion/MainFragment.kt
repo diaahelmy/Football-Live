@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,7 +15,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.getapi.Presentetion.di.Injector
+import com.example.getapi.presentetion.di.Injector
 import com.example.getapi.data.Model.LiveMatch.MatchLiveData
 
 import com.example.getapi.databinding.FragmentMainBinding
@@ -30,7 +30,8 @@ class MainFragment : Fragment() {
     private val searchQueryLiveData = MutableLiveData<String>()
     private val binding get() = _binding!!
     private lateinit var matchViewModel: MyViewModel
-    private lateinit var adapter: MatchAdapter
+
+    private lateinit var adapter: MainAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,8 +86,6 @@ class MainFragment : Fragment() {
             }
 
 
-
-
         })
         searchQueryLiveData.observe(viewLifecycleOwner, Observer { query ->
             filterData(query)
@@ -97,7 +96,7 @@ class MainFragment : Fragment() {
 
     private fun initRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = MatchAdapter(matchViewModel)
+        adapter = MainAdapter()
         binding.recyclerView.adapter = adapter
         adapter.setList(filteredList)
         displayPopularMovie()

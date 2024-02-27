@@ -1,6 +1,6 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
-import com.example.getapi.Presentetion.MyViewModelFactor
+import com.example.getapi.presentetion.MyViewModelFactor
 import com.example.getapi.domian.usecases.GetMatchUseCase
 import com.example.getapi.domian.usecases.UpdateMatchUseCase
 import dagger.Module

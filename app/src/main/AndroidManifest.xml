@@ -18,11 +18,11 @@
         android:theme="@style/Theme.Getapi"
         tools:targetApi="31">
         <activity
-            android:name=".Presentetion.MainActivity"
+            android:name=".presentetion.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Getapi"
-            >
+            tools:ignore="RedundantLabel">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

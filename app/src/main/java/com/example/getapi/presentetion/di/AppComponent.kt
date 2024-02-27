@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
 import dagger.Component
 import javax.inject.Singleton

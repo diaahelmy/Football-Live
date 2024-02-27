@@ -1,6 +1,7 @@
-package com.example.getapi.Presentetion.di
+package com.example.getapi.presentetion.di
 
 import com.example.getapi.data.DataSource.MatchCacheDataSource
+import com.example.getapi.data.DataSource.MatchLineupsRemoteDataSource
 import com.example.getapi.data.DataSource.MatchLiveLocalDataSourse
 import com.example.getapi.data.DataSource.MatchRankRemoteDataSource
 import com.example.getapi.data.DataSource.MatchRemoteDataSource
@@ -19,7 +20,8 @@ class RepositoryModule {
         matchRemoteDataSource: MatchRemoteDataSource,
         matchCacheDataSource: MatchCacheDataSource,
         matchLiveLocalDataSourse: MatchLiveLocalDataSourse,
-        matchRankRemoteDataSource: MatchRankRemoteDataSource
+        matchRankRemoteDataSource: MatchRankRemoteDataSource,
+        matchLineupsRemoteDataSource: MatchLineupsRemoteDataSource
 
         ): MatchRepository {
 
@@ -27,8 +29,8 @@ class RepositoryModule {
             matchRemoteDataSource,
             matchCacheDataSource,
             matchLiveLocalDataSourse,
-            matchRankRemoteDataSource
-
+            matchRankRemoteDataSource,
+            matchLineupsRemoteDataSource
             )
     }
 }

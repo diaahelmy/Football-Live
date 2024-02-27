@@ -1,4 +1,4 @@
-package com.example.getapi.Presentetion
+package com.example.getapi.presentetion
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //
 //
 //        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-//        adapter = MatchAdapter(this,matchViewModel)
+//        adapter = MainAdapter(this,matchViewModel)
 //
 //        binding.recyclerView.adapter = adapter
 //
