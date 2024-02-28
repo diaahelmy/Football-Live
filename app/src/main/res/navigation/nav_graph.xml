@@ -39,6 +39,12 @@
         <action
             android:id="@+id/action_matchFragment_to_matchesDBFragment"
             app:destination="@id/matchesDBFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_matchesDBFragment2"
+            app:destination="@id/matchesDBFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_matchesDBFragment3"
+            app:destination="@id/matchesDBFragment" />
 
     </fragment>
     <fragment
@@ -59,6 +65,9 @@
         <action
             android:id="@+id/action_rnakFragment_self"
             app:destination="@id/rnakFragment" />
+        <action
+            android:id="@+id/action_rnakFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
 
     </fragment>
     <fragment
@@ -72,6 +81,9 @@
         <action
             android:id="@+id/action_matchesDBFragment_to_rnakFragment"
             app:destination="@id/rnakFragment" />
+        <action
+            android:id="@+id/action_matchesDBFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 </navigation>
