@@ -14,6 +14,11 @@
             android:icon="@drawable/la_liga_logo"
             android:title="@string/la_liga" />
         <item
+            android:id="@+id/Egypit_League"
+            android:icon="@drawable/backgroundrank"
+            android:title="@string/egypit_league" />
+
+        <item
             android:id="@+id/matches"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/matches"

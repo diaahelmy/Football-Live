@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import com.example.getapi.R
 import com.example.getapi.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
@@ -134,35 +134,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+    private fun replaceFragment(fragment: Fragment) {
 
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView, fragment)
+        fragmentTransaction.commit()
+
+
+    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
         when (item.itemId) {
             R.id.La_Liga -> {
 
-                  val navController = findNavController(R.id.fragmentContainerView)
-                navController.navigate(
-                    MainFragmentDirections.actionMainFragmentToRnakFragment(
-                        36
-                    )
-                )
+              replaceFragment(RankFragment.newInstance(36))
             //  findNavController().navigateUp()
         }
 
             R.id.Premier_League -> {
-                val navController = findNavController(R.id.fragmentContainerView)
-                navController.navigate(
-                    MainFragmentDirections.actionMainFragmentToRnakFragment(
-                        1
-                    )
-                )
+                replaceFragment(RankFragment.newInstance(1))
+
 
             }
 
-            R.id.matches -> {
-                val navController = findNavController(R.id.fragmentContainerView)
-                navController.navigate(
-                    MainFragmentDirections.actionMainFragmentToMatchesDBFragment()
-                )
+            R.id.matches -> replaceFragment(MatchesDBFragment())
+
+            R.id.Egypit_League -> {
+                replaceFragment(RankFragment.newInstance(38612))
+
 
             }
 

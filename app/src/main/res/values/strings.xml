@@ -31,4 +31,5 @@
     <string name="la_liga" tools:ignore="MissingTranslation">La Liga</string>
     <string name="matches" tools:ignore="MissingTranslation">Matches</string>
     <string name="koralive" tools:ignore="MissingTranslation">KoraLive</string>
+    <string name="egypit_league" tools:ignore="MissingTranslation">Egypit League</string>
 </resources>

@@ -16,7 +16,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <androidx.appcompat.widget.SearchView
                 android:layout_marginHorizontal="10dp"
                 app:iconifiedByDefault="false"
@@ -28,7 +27,8 @@
                 android:background="@drawable/searchshap"
                 android:hint="@string/search"
                 app:queryBackground="@android:color/transparent"
-                />
+               >
+            </androidx.appcompat.widget.SearchView>
 
 
         </com.google.android.material.appbar.AppBarLayout>

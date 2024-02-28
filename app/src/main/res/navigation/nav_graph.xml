@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_rnakFragment_to_matchesDBFragment"
             app:destination="@id/matchesDBFragment" />
+        <action
+            android:id="@+id/action_rnakFragment_self"
+            app:destination="@id/rnakFragment" />
 
     </fragment>
     <fragment

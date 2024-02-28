@@ -10,6 +10,5 @@ interface MatchRepository {
     suspend fun getMatch(): List<MatchLiveData>
     suspend fun getRank(id:String): List<Ranking>
     suspend fun getLineup(matchid:String): List<LineupsStatistic>
-
     suspend fun updateMatch(): List<MatchLiveData>
 }

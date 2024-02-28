@@ -38,7 +38,15 @@ class RankFragment : Fragment() {
         _binding = FragmentRnakBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    companion object {
+        fun newInstance(leagueId: Int): RankFragment {
+            val fragment = RankFragment()
+            val args = Bundle()
+            args.putInt("leagueId", leagueId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

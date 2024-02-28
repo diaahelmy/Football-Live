@@ -17,12 +17,18 @@ class MatchLiveRepositoryFootball(
     private val matchCacheDataSource: MatchCacheDataSource,
     private val matchLiveLocalDataSourse: MatchLiveLocalDataSourse,
     private val matchRankDataSource: MatchRankRemoteDataSource,
-    private val matchLineupsRemoteDataSource: MatchLineupsRemoteDataSource
+    private val matchLineupsRemoteDataSource: MatchLineupsRemoteDataSource,
 
     ) : MatchRepository {
     override suspend fun getMatch(): List<MatchLiveData> {
 
-        return getMatchFromAPI()
+        val newListMatchs = getMatchFromAPI()
+        // if you want clear a data Cache but me dont use that if you want can you delete a  //
+//        matchLiveLocalDataSourse.clearAll()
+
+        matchLiveLocalDataSourse.saveMatchToDB(newListMatchs)
+        matchCacheDataSource.saveMatchToCache(newListMatchs)
+        return newListMatchs
     }
 
 
@@ -36,7 +42,7 @@ class MatchLiveRepositoryFootball(
 
     override suspend fun updateMatch(): List<MatchLiveData> {
 
-        return getMoviesFromCache()
+        return getMatchFromCache()
     }
 
     private suspend fun getMatchFromAPI(): List<MatchLiveData> {
@@ -61,13 +67,14 @@ class MatchLiveRepositoryFootball(
 
         return matchList
     }
+
     private suspend fun getLineupsFromAPI(matchId: String): List<LineupsStatistic> {
 
         lateinit var lineupsList: List<LineupsStatistic>
 
         try {
 
-            val response =  matchLineupsRemoteDataSource.getLineups(matchId)
+            val response = matchLineupsRemoteDataSource.getLineups(matchId)
 
             val body = response.body()
             if (body != null) {
@@ -82,6 +89,7 @@ class MatchLiveRepositoryFootball(
         return lineupsList
 
     }
+
     private suspend fun getRankFromAPI(leagueId: String): List<Ranking> {
 
         lateinit var rankList: List<Ranking>
@@ -100,7 +108,7 @@ class MatchLiveRepositoryFootball(
             Log.d("diaa", "$e")
 
         }
-            return rankList
+        return rankList
 
     }
 
@@ -127,7 +135,7 @@ class MatchLiveRepositoryFootball(
         return matchList
     }
 
-    private suspend fun getMoviesFromCache(): List<MatchLiveData> {
+    private suspend fun getMatchFromCache(): List<MatchLiveData> {
         lateinit var matchList: List<MatchLiveData>
         try {
             matchList = matchCacheDataSource.getmatchFromCache()
