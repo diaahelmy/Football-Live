@@ -1,9 +1,6 @@
 package com.example.getapi.presentetion
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
 import android.view.LayoutInflater
@@ -14,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.getapi.NetworkAvailable
 import com.example.getapi.presentetion.di.Injector
 import com.example.getapi.data.Model.LiveMatch.MatchLiveData
 
@@ -53,7 +51,7 @@ class MainFragment : Fragment() {
 
 
         matchViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
-        if (isNetworkAvailable()) {
+        if (NetworkAvailable(requireContext()).isNetworkAvailable()) {
             initRecyclerView()
         } else {
 
@@ -130,21 +128,7 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun isNetworkAvailable(): Boolean {
-        val connectivityManager =
-            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val networkCapabilities =
-            connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
-
-        return when {
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            else -> false
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

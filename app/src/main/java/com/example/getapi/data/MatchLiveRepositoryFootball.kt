@@ -23,7 +23,7 @@ class MatchLiveRepositoryFootball(
     override suspend fun getMatch(): List<MatchLiveData> {
 
         val newListMatchs = getMatchFromAPI()
-        // if you want clear a data Cache but me dont use that if you want can you delete a  //
+        // if you want clear a data base but me dont use that if you want can you delete a  //
 //        matchLiveLocalDataSourse.clearAll()
 
         matchLiveLocalDataSourse.saveMatchToDB(newListMatchs)

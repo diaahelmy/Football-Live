@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.getapi.Logo
+import com.example.getapi.NetworkAvailable
 
 import com.example.getapi.databinding.FragmentMatchBinding
 import com.example.getapi.presentetion.di.Injector
@@ -53,37 +54,50 @@ class MatchFragment : Fragment() {
         val match = MatchFragmentArgs.fromBundle(arguments).matchid
         binding.apply {
 
-                matchViewModel!!.fetchData(match)
+            matchViewModel!!.fetchData(match)
 
-                match.Match_ID
+            match.Match_ID
 //            tAwayScore.text = match.Away_Score.toString()
 //
 //            tHomeScore.text = match.Home_Score.toString()
-                tAwayTeam.text = match.Away_Team
-                tHomeTeam.text = match.Home_Team
-                time.text = match.Status
-                leagname.text = match.League
+            tAwayTeam.text = match.Away_Team
+            tHomeTeam.text = match.Home_Team
+            time.text = match.Status
+            leagname.text = match.League
 
 
-                val awayLogoId = Logo().getLogoId(match.Away_Team)
-                val homeLogoId = Logo().getLogoId(match.Home_Team)
-                logoalHilal.setImageResource(awayLogoId)
-                logoalHilalhome.setImageResource(homeLogoId)
-                logoalHilal.setOnClickListener {
-                    val action =
-                        MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
-                    it.findNavController().navigate(action)
-                }
+            val awayLogoId = Logo().getLogoId(match.Away_Team)
+            val homeLogoId = Logo().getLogoId(match.Home_Team)
+            logoalHilal.setImageResource(awayLogoId)
+            logoalHilalhome.setImageResource(homeLogoId)
+            logoalHilal.setOnClickListener {
+                val action =
+                    MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
+                it.findNavController().navigate(action)
+            }
 
-                logoalHilalhome.setOnClickListener {
-                    val action =
-                        MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
-                    it.findNavController().navigate(action)
-                }
+            logoalHilalhome.setOnClickListener {
+                val action =
+                    MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
+                it.findNavController().navigate(action)
+            }
         }
-        initRecyclerViewAway(match.Match_ID)
-                initRecyclerViewHome(match.Match_ID)
-
+        if (NetworkAvailable(requireContext()).isNetworkAvailable()) {
+            initRecyclerViewAway(match.Match_ID)
+            initRecyclerViewHome(match.Match_ID)
+            binding.noInternet.visibility = View.GONE
+            binding.recyclerViewhome.visibility = View.VISIBLE
+            binding.recyclerViewaway.visibility = View.VISIBLE
+        }else{
+            binding.noInternet.visibility = View.VISIBLE
+            binding.recyclerViewhome.visibility = View.GONE
+            binding.recyclerViewaway.visibility = View.GONE
+            Toast.makeText(
+                requireContext(),
+                "No internet connection available.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
 
     }

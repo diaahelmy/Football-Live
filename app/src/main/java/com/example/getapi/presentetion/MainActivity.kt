@@ -1,12 +1,14 @@
 package com.example.getapi.presentetion
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.getapi.R
 import com.example.getapi.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
@@ -134,6 +136,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+
     private fun replaceFragment(fragment: Fragment) {
 
         val fragmentManager = supportFragmentManager
@@ -143,14 +146,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
             R.id.La_Liga -> {
 
-              replaceFragment(RankFragment.newInstance(36))
-            //  findNavController().navigateUp()
-        }
+                replaceFragment(RankFragment.newInstance(36))
+                //  findNavController().navigateUp()
+            }
 
             R.id.Premier_League -> {
                 replaceFragment(RankFragment.newInstance(1))
@@ -158,7 +162,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
 
-            R.id.matches -> replaceFragment(MatchesDBFragment())
+            R.id.home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+            }
+
+            R.id.matches -> {
+                val navController = findNavController(R.id.fragmentContainerView)
+                navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToMatchesDBFragment()
+                )
+            }
 
             R.id.Egypit_League -> {
                 replaceFragment(RankFragment.newInstance(38612))

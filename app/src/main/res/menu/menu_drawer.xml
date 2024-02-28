@@ -5,6 +5,11 @@
 
         <item
 
+            android:id="@+id/home"
+            android:icon="@drawable/_6796home6"
+            android:title="@string/home" />
+        <item
+
             android:id="@+id/Premier_League"
             android:icon="@drawable/premier_league_logo"
             android:title="@string/premier_league" />

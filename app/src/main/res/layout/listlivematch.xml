@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+   >
 
 
     <com.google.android.material.card.MaterialCardView
@@ -42,7 +42,7 @@
                 android:lines="2"
                 android:maxLines="2"
                 android:singleLine="false"
-                android:text="Olympique de Marseille"
+                android:text="@string/aston_villa"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/logoal_hilalhome"
@@ -120,7 +120,7 @@
                 android:lines="2"
                 android:maxLines="2"
                 android:singleLine="false"
-                android:text="Manchester \n United"
+                android:text="@string/manchester_united"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/logoal_hilal"
@@ -145,8 +145,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
-                android:text="0"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tHome_Team"
@@ -159,8 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:text="1"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tAway_Team"

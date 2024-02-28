@@ -2,9 +2,7 @@ package com.example.getapi.presentetion
 
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.getapi.NetworkAvailable
 import com.example.getapi.presentetion.di.Injector
 import com.example.getapi.databinding.FragmentRnakBinding
 import javax.inject.Inject
@@ -55,12 +54,14 @@ class RankFragment : Fragment() {
         (requireActivity().application as Injector).createMatchSubComponent().injectRank(this)
 
         matchViewModel = ViewModelProvider(this, factory)[MyViewModel::class.java]
-        if (isNetworkAvailable()) {
+        if (NetworkAvailable(requireContext()).isNetworkAvailable()) {
 
             Log.d("diaa", match.toString())
 
 
             initRecyclerView(match.toString())
+            binding.noInternet.visibility = View.GONE
+            binding.recyclerViewhome.visibility = View.VISIBLE
         } else {
             binding.noInternet.visibility = View.VISIBLE
             binding.recyclerViewhome.visibility = View.GONE
@@ -103,21 +104,6 @@ class RankFragment : Fragment() {
 
     }
 
-    private fun isNetworkAvailable(): Boolean {
-        val connectivityManager =
-            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val networkCapabilities =
-            connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
-
-        return when {
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            else -> false
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
