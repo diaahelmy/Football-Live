@@ -5,25 +5,25 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
-import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.getapi.presentetion.di.Injector
 import com.example.getapi.data.Model.LiveMatch.MatchLiveData
-
-import com.example.getapi.databinding.FragmentMainBinding
+import com.example.getapi.databinding.FragmentMatchesDBBinding
+import com.example.getapi.presentetion.di.Injector
 import javax.inject.Inject
 
-class MainFragment : Fragment() {
+
+class MatchesDBFragment : Fragment() {
     @Inject
     lateinit var factory: MyViewModelFactor
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentMatchesDBBinding? = null
     private val originalList = mutableListOf<MatchLiveData>()
     private val filteredList = mutableListOf<MatchLiveData>()
     private val searchQueryLiveData = MutableLiveData<String>()
@@ -37,7 +37,7 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
 
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding =FragmentMatchesDBBinding.inflate(inflater, container, false)
 
         return binding.root
 
@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity().application as Injector).createMatchSubComponent().inject(this)
+        (requireActivity().application as Injector).createMatchSubComponent().injectmatches(this)
 
 
 
@@ -106,7 +106,7 @@ class MainFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     private fun displayPopularMovie() {
         binding.progressBar.visibility = View.VISIBLE
-        val responseLiveData = matchViewModel.getMatch()
+        val responseLiveData = matchViewModel.updateMatch()
         responseLiveData.observe(viewLifecycleOwner) {
 
             if (it != null) {

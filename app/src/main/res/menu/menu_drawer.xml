@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
 
         <item
 
             android:id="@+id/Premier_League"
             android:icon="@drawable/premier_league_logo"
-            android:title="Premier League" />
+            android:title="@string/premier_league" />
 
         <item
             android:id="@+id/La_Liga"
             android:icon="@drawable/la_liga_logo"
-            android:title="La Liga" />
-
+            android:title="@string/la_liga" />
+        <item
+            android:id="@+id/matches"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="@string/matches"
+            app:itemIconTint="@null"
+            />
     </group>
 </menu>

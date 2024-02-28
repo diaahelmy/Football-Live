@@ -23,7 +23,7 @@ android {
         buildConfigField(
             "String",
             "X_RapidAPI_Key",
-            "\"0bec3c4734msh02fa27d22fe06d2p17adfajsn5fc21bfbd5cc\""
+            "\"9afd6b3791msh3e102d8b8957f41p148ba2jsn8e37b59c3162\""
         )
         buildConfigField(
             "String",

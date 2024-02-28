@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_height="wrap_content"
+    android:background="@color/seed"
+    android:gravity="bottom"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent">
+
+    <TextView android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/nav_content_margin_StartEnd"
+        android:layout_marginTop="@dimen/nav_content_margin_top"
+        android:layout_marginEnd="@dimen/nav_content_margin_StartEnd"
+        android:layout_marginBottom="@dimen/nav_content_margin_bottom"
+        android:text="@string/koralive"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/seed"/>
+</LinearLayout>

@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +24,7 @@ class MatchFragment : Fragment() {
     lateinit var factory: MyViewModelFactor
     private var _binding: FragmentMatchBinding? = null
     private var matchViewModel: MyViewModel? = null
-    private lateinit var adapterHome:MatchHomeAdapter
+    private lateinit var adapterHome: MatchHomeAdapter
     private lateinit var adapterAway: MatchAwayAdapter
 
     private val binding get() = _binding!!
@@ -53,60 +52,66 @@ class MatchFragment : Fragment() {
 
         val match = MatchFragmentArgs.fromBundle(arguments).matchid
         binding.apply {
-            matchViewModel!!.fetchData(match)
 
-            match.Match_ID
+                matchViewModel!!.fetchData(match)
+
+                match.Match_ID
 //            tAwayScore.text = match.Away_Score.toString()
 //
 //            tHomeScore.text = match.Home_Score.toString()
-            tAwayTeam.text = match.Away_Team
-            tHomeTeam.text = match.Home_Team
-            time.text = match.Status
-            leagname.text = match.League
+                tAwayTeam.text = match.Away_Team
+                tHomeTeam.text = match.Home_Team
+                time.text = match.Status
+                leagname.text = match.League
 
 
-            val awayLogoId = Logo().getLogoId(match.Away_Team)
-            val homeLogoId = Logo().getLogoId(match.Home_Team)
-            logoalHilal.setImageResource(awayLogoId)
-            logoalHilalhome.setImageResource(homeLogoId)
-            logoalHilal.setOnClickListener {
-                val action =
-                    MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
-                it.findNavController().navigate(action)
-            }
+                val awayLogoId = Logo().getLogoId(match.Away_Team)
+                val homeLogoId = Logo().getLogoId(match.Home_Team)
+                logoalHilal.setImageResource(awayLogoId)
+                logoalHilalhome.setImageResource(homeLogoId)
+                logoalHilal.setOnClickListener {
+                    val action =
+                        MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
+                    it.findNavController().navigate(action)
+                }
 
-            logoalHilalhome.setOnClickListener {
-                val action =
-                    MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
-                it.findNavController().navigate(action)
-            }
+                logoalHilalhome.setOnClickListener {
+                    val action =
+                        MatchFragmentDirections.actionMatchFragmentToRnakFragment(match.League_ID)
+                    it.findNavController().navigate(action)
+                }
         }
-        initRecyclerViewHome(match.Match_ID)
         initRecyclerViewAway(match.Match_ID)
+                initRecyclerViewHome(match.Match_ID)
+
+
+
     }
 
     private fun initRecyclerViewHome(id: String) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewhome.layoutManager = LinearLayoutManager(requireContext())
         adapterHome = MatchHomeAdapter()
-        binding.recyclerView.adapter = adapterHome
+        binding.recyclerViewhome.adapter = adapterHome
         displayMatchHome(id)
     }
+
     private fun initRecyclerViewAway(id: String) {
         binding.recyclerViewaway.layoutManager = LinearLayoutManager(requireContext())
         adapterAway = MatchAwayAdapter()
         binding.recyclerViewaway.adapter = adapterAway
         displayMatchAway(id)
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun displayMatchAway(id: String) {
         binding.progressBar.visibility = View.VISIBLE
         val responseLiveData = matchViewModel?.getLineups(id)
-        responseLiveData?.observe(viewLifecycleOwner, Observer {
+        responseLiveData?.observe(viewLifecycleOwner) {
             if (it != null) {
                 adapterAway.setList(it)
                 adapterAway.notifyDataSetChanged()
                 binding.progressBar.visibility = View.GONE
-                binding.recyclerViewaway.visibility=View.VISIBLE
+                binding.recyclerViewaway.visibility = View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), "No Data Available", Toast.LENGTH_LONG).show()
@@ -114,20 +119,21 @@ class MatchFragment : Fragment() {
 
             }
 
-        })
+        }
 
 
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private fun displayMatchHome(id: String) {
         binding.progressBar.visibility = View.VISIBLE
         val responseLiveData = matchViewModel?.getLineups(id)
-        responseLiveData?.observe(viewLifecycleOwner, Observer {
+        responseLiveData?.observe(viewLifecycleOwner) {
             if (it != null) {
                 adapterHome.setList(it)
                 adapterHome.notifyDataSetChanged()
                 binding.progressBar.visibility = View.GONE
-                binding.recyclerView.visibility=View.VISIBLE
+                binding.recyclerViewhome.visibility = View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), "No Data Available", Toast.LENGTH_LONG).show()
@@ -135,10 +141,11 @@ class MatchFragment : Fragment() {
 
             }
 
-        })
+        }
 
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding == null

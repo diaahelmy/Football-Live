@@ -12,7 +12,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,7 +55,7 @@ class RankFragment : Fragment() {
             initRecyclerView(match.toString())
         } else {
             binding.noInternet.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.GONE
+            binding.recyclerViewhome.visibility = View.GONE
             Toast.makeText(
                 requireContext(),
                 "No internet connection available.",
@@ -68,9 +67,9 @@ class RankFragment : Fragment() {
     }
 
     private fun initRecyclerView(id: String) {
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewhome.layoutManager = LinearLayoutManager(requireContext())
         adapter = RankAdapter()
-        binding.recyclerView.adapter = adapter
+        binding.recyclerViewhome.adapter = adapter
         displayMatchRank(id)
     }
 
@@ -78,12 +77,12 @@ class RankFragment : Fragment() {
     private fun displayMatchRank(id: String) {
         binding.progressBar.visibility = View.VISIBLE
         val responseLiveData = matchViewModel.getRank(id)
-        responseLiveData.observe(viewLifecycleOwner, Observer {
+        responseLiveData.observe(viewLifecycleOwner) {
             if (it != null) {
                 adapter.setList(it)
                 adapter.notifyDataSetChanged()
                 binding.progressBar.visibility = View.GONE
-                binding.recyclerView.visibility=View.VISIBLE
+                binding.recyclerViewhome.visibility=View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), "No Data Available", Toast.LENGTH_LONG).show()
@@ -91,7 +90,7 @@ class RankFragment : Fragment() {
 
             }
 
-        })
+        }
 
 
     }

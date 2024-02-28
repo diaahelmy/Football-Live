@@ -35,11 +35,8 @@ class MatchLiveRepositoryFootball(
     }
 
     override suspend fun updateMatch(): List<MatchLiveData> {
-        val newListMatch = getMatchFromAPI()
-        matchLiveLocalDataSourse.clearAll()
-        matchLiveLocalDataSourse.saveMatchToDB(newListMatch)
-        matchCacheDataSource.saveMatchToCache(newListMatch)
-        return newListMatch
+
+        return getMoviesFromCache()
     }
 
     private suspend fun getMatchFromAPI(): List<MatchLiveData> {

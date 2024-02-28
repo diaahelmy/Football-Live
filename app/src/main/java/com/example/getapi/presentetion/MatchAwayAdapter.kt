@@ -1,7 +1,9 @@
 package com.example.getapi.presentetion
 
 import android.annotation.SuppressLint
+import android.graphics.Typeface
 import android.text.SpannableStringBuilder
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,75 +28,74 @@ class MatchAwayAdapter : RecyclerView.Adapter<MatchAwayAdapter.MyViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(dataplayer: LineupsStatistic) {
+            binding.apply {
+                if (dataplayer.Team == "AWAY" && dataplayer.Stats.minutesPlayed >= 1) {
+                    rate.text = dataplayer.Stats.rating.toString()
+                    rate.visibility = View.VISIBLE
+                    if (dataplayer.Stats.rating >= 7.8) {
+                        star.visibility = View.VISIBLE
+                    } else {
+                        star.visibility = View.GONE
+                    }
 
-            if (dataplayer.Text.isNotEmpty()) {
-                binding.error.visibility = View.GONE
-                binding.text.visibility = View.VISIBLE
-                binding.text.text = dataplayer.Text
-                binding.cardview.visibility = View.VISIBLE
-                binding.goals.visibility = View.GONE
-                binding.Formation.visibility = View.GONE
-                binding.nameplayer.visibility = View.GONE
-                binding.numberplayer.visibility = View.GONE
-                binding.minutesPlayed.visibility = View.GONE
-                binding.positionplayer.visibility = View.GONE
-                binding.goalsScored.visibility = View.GONE
-                binding.minutesPlayedid.visibility = View.GONE
-                binding.materialTextView.visibility = View.GONE
-                binding.rate.visibility = View.GONE
-                binding.star.visibility = View.GONE
-            } else if (dataplayer.Team == "AWAY" && dataplayer.Stats.minutesPlayed >= 1) {
-                if (dataplayer.Stats.rating >= 8.5) {
-                    binding.star.visibility = View.VISIBLE
-                } else {
-                    binding.star.visibility = View.GONE
+                    // Set the visibility of other views within the RecyclerView item
+                    text.visibility = View.GONE
+                    nameplayer.visibility = View.VISIBLE
+                    cardview.visibility = View.VISIBLE
+                    Constraint.visibility = View.VISIBLE
+                    goals.visibility = View.VISIBLE
+                    Formation.visibility = View.VISIBLE
+                    numberplayer.visibility = View.VISIBLE
+                    minutesPlayed.visibility = View.VISIBLE
+                    positionplayer.visibility = View.VISIBLE
+                    goalsScored.visibility = View.VISIBLE
+                    minutesPlayedid.visibility = View.VISIBLE
+                    materialTextView.visibility = View.VISIBLE
 
-                }
-                binding.text.visibility = View.GONE
-                binding.nameplayer.visibility = View.VISIBLE
-                binding.cardview.visibility = View.VISIBLE
-                binding.Constraint.visibility = View.VISIBLE
-                binding.goals.visibility = View.VISIBLE
-                binding.Formation.visibility = View.VISIBLE
-                binding.numberplayer.visibility = View.VISIBLE
-                binding.minutesPlayed.visibility = View.VISIBLE
-                binding.positionplayer.visibility = View.VISIBLE
-                binding.goalsScored.visibility = View.VISIBLE
-                binding.minutesPlayedid.visibility = View.VISIBLE
-                binding.materialTextView.visibility = View.VISIBLE
-
-                if (dataplayer.Stats.goals >= 1) {
-                    binding.goals.setTextColor(
-                        ContextCompat.getColor(
-                            binding.goals.context,
-                            R.color.red
+                    // Customize the appearance of the goals TextView
+                    if (dataplayer.Stats.goals >= 1) {
+                        goals.setTextColor(
+                            ContextCompat.getColor(
+                                goals.context,
+                                R.color.seed
+                            )
                         )
-                    )
-                }
-                val away = dataplayer.Name
-                val builder = SpannableStringBuilder(away)
-                if (away.length >= 13) {
-                    for (i in 0 until away.length - 1) {
-                        // Check for space
-                        if (away[i] == ' ') {
-                            builder.insert(i, "\n")
+                        goals.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+                        goals.setTypeface(null, Typeface.BOLD)
+                    }
 
+                    // Modify the nameplayer TextView to insert a line break if necessary
+                    val away = dataplayer.Name
+                    val builder = SpannableStringBuilder(away)
+                    if (away.length >= 11) {
+                        for (i in 0 until away.length - 1) {
+                            // Check for space
+                            if (away[i] == ' ') {
+                                builder.insert(i, "\n")
+                            }
                         }
                     }
+                    nameplayer.text = builder
+
+                    // Set the values for other TextViews
+                    goals.text = dataplayer.Stats.goals.toString()
+                    Formation.text = dataplayer.Formation
+                    numberplayer.text = "(${dataplayer.Jersey_Num})"
+                    minutesPlayed.text = dataplayer.Stats.minutesPlayed.toString()
+                    positionplayer.text = dataplayer.Position
+                } else {
+                    nameplayer.visibility = View.GONE
+                    cardview.visibility = View.GONE
+                    Constraint.visibility = View.GONE
+                    goals.visibility = View.GONE
+                    Formation.visibility = View.GONE
+                    numberplayer.visibility = View.GONE
+                    minutesPlayed.visibility = View.GONE
+                    positionplayer.visibility = View.GONE
+                    goalsScored.visibility = View.GONE
+                    materialTextView.visibility = View.GONE
                 }
-                binding.goals.text = dataplayer.Stats.goals.toString()
-                binding.Formation.visibility = View.VISIBLE
-                binding.Formation.text = dataplayer.Formation
-                binding.numberplayer.text = "(${dataplayer.Jersey_Num})"
-                binding.nameplayer.text = builder
-                binding.minutesPlayed.text = dataplayer.Stats.minutesPlayed.toString()
-                binding.positionplayer.text = dataplayer.Position
-
-            } else {
-                binding.cardview.visibility = View.GONE
             }
-
-
         }
     }
 
@@ -106,13 +107,13 @@ class MatchAwayAdapter : RecyclerView.Adapter<MatchAwayAdapter.MyViewHolder>() {
         return MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(matchList[position])
-    }
+
 
     override fun getItemCount(): Int {
         return matchList.size
     }
 
-
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.bind(matchList[position])
+    }
 }

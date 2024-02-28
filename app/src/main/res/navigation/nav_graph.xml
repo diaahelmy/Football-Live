@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_rnakFragment"
             app:destination="@id/rnakFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_matchesDBFragment"
+            app:destination="@id/matchesDBFragment" />
 
 
     </fragment>
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_matchFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_matchesDBFragment"
+            app:destination="@id/matchesDBFragment" />
 
     </fragment>
     <fragment
@@ -47,6 +53,22 @@
         <argument
             android:name="leagueId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_rnakFragment_to_matchesDBFragment"
+            app:destination="@id/matchesDBFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/matchesDBFragment"
+        android:name="com.example.getapi.presentetion.MatchesDBFragment"
+        android:label="fragment_matches_d_b"
+        tools:layout="@layout/fragment_matches_d_b" >
+        <action
+            android:id="@+id/action_matchesDBFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+        <action
+            android:id="@+id/action_matchesDBFragment_to_rnakFragment"
+            app:destination="@id/rnakFragment" />
     </fragment>
 
 </navigation>

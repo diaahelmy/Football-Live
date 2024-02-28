@@ -138,16 +138,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.La_Liga -> {
-//
-                val navController = findNavController(R.id.fragmentContainerView)
+
+                  val navController = findNavController(R.id.fragmentContainerView)
                 navController.navigate(
                     MainFragmentDirections.actionMainFragmentToRnakFragment(
                         36
                     )
                 )
-
-
-            }
+            //  findNavController().navigateUp()
+        }
 
             R.id.Premier_League -> {
                 val navController = findNavController(R.id.fragmentContainerView)
@@ -155,6 +154,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     MainFragmentDirections.actionMainFragmentToRnakFragment(
                         1
                     )
+                )
+
+            }
+
+            R.id.matches -> {
+                val navController = findNavController(R.id.fragmentContainerView)
+                navController.navigate(
+                    MainFragmentDirections.actionMainFragmentToMatchesDBFragment()
                 )
 
             }

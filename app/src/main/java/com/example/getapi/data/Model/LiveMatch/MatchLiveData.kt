@@ -34,5 +34,5 @@ data class MatchLiveData(
     val Live_Draw_Odd: Double,
     @SerializedName("Live Home Odd")
     val Live_Home_Odd: Double,
-    val Status: String
+    val Status: String,
 ): Serializable

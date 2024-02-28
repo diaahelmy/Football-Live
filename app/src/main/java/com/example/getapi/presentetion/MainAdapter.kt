@@ -4,7 +4,7 @@ package com.example.getapi.presentetion
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getapi.Logo
 import com.example.getapi.R
@@ -39,12 +39,16 @@ class MainAdapter :
             binding.leagname.text = match.League
 
 //            viewModel.fetchData(match)
-            binding.cardview.setOnClickListener {
+            binding.cardview.setOnClickListener { view ->
+                val navController = Navigation.findNavController(view)
 
-                val action = MainFragmentDirections.actionMainFragmentToMatchFragment(match)
-                it.findNavController().navigate(action)
-
-
+                if (navController.currentDestination?.id == R.id.mainFragment) {
+                    val action = MainFragmentDirections.actionMainFragmentToMatchFragment(match)
+                    navController.navigate(action)
+                } else {
+                    val action2 = MatchesDBFragmentDirections.actionMatchesDBFragmentToMatchFragment(match)
+                    navController.navigate(action2)
+                }
             }
 
 
